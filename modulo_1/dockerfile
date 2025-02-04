@@ -1,0 +1,60 @@
+# vesion 1.
+# esto lo que hace es instalar pandas en una imagen 3.11 de python
+# además de poner el bash como entrypoint de la imagen
+
+# FROM python:3.11
+# run pip install pandas
+# entrypoint [ "bash" ]
+
+
+# vesion 2.
+# esto lo que hace es instalar pandas en una imagen 3.11 de python
+# además CREA UN DIRECTORIO LLAMADO /APP EN EL CONTENEDOR
+# COPIA EL FICHERO pipeline.py que está en el directorio donde esta corriendo el comando de docker build en el director app que se creo.
+# docker build -t test:pandas . esto correría este docker file
+# FROM python:3.11
+# RUN pip install pandas
+# WORKDIR /app
+# COPY pipeline.py pipeline.py
+# ENTRYPOINT [ "bash" ]
+
+
+# vesion 2.
+# esto lo que hace es instalar pandas en una imagen 3.11 de python
+# además CREA UN DIRECTORIO LLAMADO /APP EN EL CONTENEDOR
+# COPIA EL FICHERO pipeline.py que está en el directorio donde esta corriendo el comando de docker build en el director app que se creo.
+# se sobre escribe el entry point para poner python y que ejecute el fichero pipeline.py
+# docker build -t test:pandas . esto crearia esta imagen
+# docker run it test:pandas 2025-01-14
+# FROM python:3.11
+# RUN pip install pandas
+# WORKDIR /app
+# COPY pipeline.py pipeline.py
+# ENTRYPOINT [ "python", "pipeline.py" ]
+
+
+# docker run -it -e POSTGRES_USER="root" -e POSTGRES_PASSWORD="root" -e POSTGRES_DB="ny_taxi" -v /d:/db_postgres_docker:/var/lib/postgresql/data -p 5433:5432 postgres:15
+# esto es para poder correr un docker containner 
+
+
+
+# esto es para conectar a postgres con pgadmin, ambos corriendo en contenedores separados.
+
+# docker run -it \
+# -e POSTGRES_USER="root" \
+# -e POSTGRES_PASSWORD="root" \
+# -e POSTGRES_DB="mydb" \
+# -v host/route:container/root \
+# -p 5432:5432 \
+# --network=network-name \
+# --name pg-database \
+# postgres:version
+
+
+# docker run -it \
+# -e PGADMIN_DEFAULT_EMAIL="admin@admin.com" \
+# -e PGADMIN_DEFAULT_PASSWORD="root" \
+# -p 8080:80 \
+# --network=network-name \
+# --name pgadmin \
+# dpage/pgadmin4
